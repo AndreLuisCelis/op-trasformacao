@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operação Transformação</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Staatliches&display=swap" rel="stylesheet">
+    <!-- Import Map for potential future libraries if needed -->
+    <script type="importmap">
+      {
+        "imports": {
+          "canvas-confetti": "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/+esm"
+        }
+      }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Operação Transformação</h1>
+        <p class="motivational-quote">"A dor é temporária. A glória é eterna."</p>
+    </header>
+
+    <!-- Global Seesaw Display -->
+    <div id="global-seesaw-display">
+        <h3>Equilíbrio Ético Diário</h3>
+        <div class="seesaw-container">
+            <div class="seesaw-base"></div>
+            <div class="seesaw-beam" id="global-seesaw-beam"> 
+                <div class="seesaw-side seesaw-left">
+                    <span class="seesaw-label">Tentações</span>
+                </div>
+                <div class="seesaw-pivot"></div>
+                <div class="seesaw-side seesaw-right">
+                     <span class="seesaw-label">Disciplinas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="active-section">
+            <h2>Bem-vindo, Recruta!</h2>
+            <p class="impact-phrase">Disciplina. Foco. Força.<br>Sua guerra começa agora.</p>
+            <button id="start-program-btn" class="cta-button">Iniciar Programa</button>
+            <div class="social-share">
+                <p>Compartilhe sua jornada:</p>
+                <!-- Simple Share Links - Replace # with actual share URLs -->
+                <a href="#" target="_blank" aria-label="Compartilhar no Facebook">FB</a>
+                <a href="#" target="_blank" aria-label="Compartilhar no Twitter">TW</a>
+                <a href="#" target="_blank" aria-label="Compartilhar no WhatsApp">WA</a>
+            </div>
+        </section>
+
+        <section id="training-modules" class="hidden-section">
+            <h2>Módulos de Treinamento</h2>
+            <!-- New container for sidebar + content -->
+            <div class="training-layout">
+                <!-- Content moved BEFORE nav -->
+                <div id="module-content" class="module-main-content">
+                    <!-- Content for each module will be loaded here by JS -->
+                </div>
+                 <!-- Nav moved AFTER content -->
+                <nav id="module-nav" class="module-sidebar">
+                    <!-- Module buttons remain here -->
+                    <button data-level="1" class="module-tab active">Recruta</button>
+                    <button data-level="2" class="module-tab">Cadete</button>
+                    <button data-level="3" class="module-tab">Oficial</button>
+                    <button data-level="4" class="module-tab">Capitão</button>
+                    <button data-level="5" class="module-tab">General</button>
+                    <button data-level="6" class="module-tab">Lendário</button>
+                </nav>
+            </div> <!-- End of training-layout -->
+
+            <!-- Moved mission accomplished button outside the main content area, but still within the section -->
+             <button id="mission-accomplished-btn" class="cta-button">Missão Cumprida!</button>
+        </section>
+
+        <section id="dashboard" class="hidden-section">
+            <h2>Painel de Controle</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-item">
+                    <h3>Progresso Atual</h3>
+                    <p id="current-module">Módulo: Recruta</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Dias Consecutivos</h3>
+                    <p id="consecutive-days">0 dias</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Insígnias</h3>
+                    <div id="insignias-earned">
+                        <!-- SVGs for insignias will be added here -->
+                        <span class="insignia-placeholder">Nenhuma ainda</span>
+                    </div>
+                </div>
+            </div>
+             <div class="mission-log">
+                <h3>Diário da Missão</h3>
+                <textarea id="mission-diary" placeholder="Registre seus pensamentos, desafios e vitórias aqui..."></textarea>
+            </div>
+        </section>
+
+        <section id="ethics-module" class="hidden-section">
+            <h2>A Gangorra da Consciência</h2>
+            <p>Registre suas escolhas diárias para manter o equilíbrio.</p>
+
+            <!-- Seesaw removed from here -->
+
+            <div class="ethics-choices">
+                <div class="ethics-column">
+                    <h3>Não devo, mas quero</h3>
+                    <ul id="temptations-list">
+                        <!-- Temptations added by JS -->
+                    </ul>
+                    <div class="add-ethics-item">
+                        <input type="text" id="new-temptation-input" placeholder="Adicionar nova tentação...">
+                        <button id="add-temptation-btn" class="add-item-btn">+</button>
+                    </div>
+                </div>
+                <div class="ethics-column">
+                    <h3>Não quero, mas devo</h3>
+                    <ul id="disciplines-list">
+                        <!-- Disciplines added by JS -->
+                    </ul>
+                     <div class="add-ethics-item">
+                        <input type="text" id="new-discipline-input" placeholder="Adicionar nova disciplina...">
+                        <button id="add-discipline-btn" class="add-item-btn">+</button>
+                    </div>
+                </div>
+            </div>
+             <div class="ethics-score">
+                 Pontuação de Autocontrole Diário: <span id="self-control-score">0</span>
+             </div>
+             <button id="log-ethics-btn" class="cta-button">Registrar Escolhas do Dia</button>
+        </section>
+
+    </main>
+
+    <nav id="bottom-nav">
+        <button data-section="home" class="nav-button active" aria-label="Início">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Início</span>
+        </button>
+        <button data-section="training-modules" class="nav-button" aria-label="Treinamento">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M18.36 6.64a9 9 0 1 0-12.72 0M12 2a7 7 0 1 1 0 14 7 7 0 0 1 0-14zm0 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg> <!-- Target icon -->
+            <span>Treino</span>
+        </button>
+        <button data-section="dashboard" class="nav-button" aria-label="Painel">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M13 12h7v5h-7v-5zm0-10h7v8h-7V2zm0-8h7v5H4V2z"/></svg> <!-- Dashboard icon -->
+            <span>Painel</span>
+        </button>
+        <button data-section="ethics-module" class="nav-button" aria-label="Ética">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5 7-7-1.41-1.41-5.59 5.59-2.59-2.59L5.5 13.5l3 3zM12 17.3l6-6-1.4-1.4-4.6 4.6-2.6-2.6L8 13.3l4 4z" opacity=".3"/><path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1.04-6.88l-1.41 1.41L12 14.09l3.45-3.45L14.04 9.2l-2.08 2.08z"/></svg> <!-- Balance icon - using check circle for now -->
+            <span>Ética</span>
+        </button>
+    </nav>
+
+    <footer>
+        <p>&copy; 2024 Operação Transformação. Todos os direitos reservados.</p>
+        <p class="motivational-quote">"O único dia fácil foi ontem."</p>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
